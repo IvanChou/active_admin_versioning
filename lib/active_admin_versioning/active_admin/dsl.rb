@@ -29,7 +29,7 @@ module ActiveAdminVersioning
                 end
                 row :event, &:event_i18n
                 row :whodunnit do |record|
-                  record.send(ActiveAdminVersioning.configuration.whodunnit_attribute_name).presence ||
+                  record.actor.presence ||
                       span(t("views.version.unknown_user"), class: "empty")
                 end
                 row :created_at
