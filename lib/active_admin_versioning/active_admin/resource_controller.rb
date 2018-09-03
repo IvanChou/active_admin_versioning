@@ -6,9 +6,9 @@ module ActiveAdminVersioning
       end
 
       def show
-        page = params[:page].to_i
-        @versions = resource.versions.reorder(id: :desc, created_at: :desc).page(params[:page]).per(1)
-        @version_number = page > 0 ? @versions.total_count - (page - 1) : @versions.total_count
+        version = params[:version].to_i
+        @versions = resource.versions.reorder(id: :desc, created_at: :desc).page(version).per(1)
+        @version_number = version > 0 ? @versions.total_count - (version - 1) : @versions.total_count
         if @versions.any? && @versions[0].next.present?
           set_resource_ivar(@versions[0].next.reify)
         end

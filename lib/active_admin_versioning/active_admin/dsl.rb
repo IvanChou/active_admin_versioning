@@ -34,7 +34,7 @@ module ActiveAdminVersioning
                 end
                 row :created_at
               end
-              paginate versions, theme: :version
+              paginate versions, theme: :version, param_name: :version
             else
               I18n.t("views.version.empty", model_name: ::PaperTrail::Version.model_name.human)
             end
@@ -46,7 +46,7 @@ module ActiveAdminVersioning
 
       def enabled_paper_trail?
         if config.resource_class.respond_to?(:paper_trail)
-          config.resource_class.paper_trail.try(:enabled?)
+          ::PaperTrail.request.enabled_for_model?(config.resource_class)
         else
           config.resource_class.try(:paper_trail_enabled_for_model?)
         end

@@ -7,9 +7,7 @@ paginated_collection(versions, display_total: false, download_links: false) do
     column(:event, :event_i18n)
     column(:item_type, :item_class_i18n)
     column(:object_changes) do |record|
-      before = record.object_changes.transform_values(&:first)
-      after = record.object_changes.transform_values(&:last)
-      attributes_table_for([before, after], *record.object_changes.keys)
+      attributes_table_for(record.item_changes_for_diff, *record.object_changes.keys)
     end
     column(:created_at)
   end

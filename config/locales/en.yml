@@ -17,7 +17,7 @@ en:
         destroy: destroy
         update: update
       pagination:
-        last: "Last &raquo;"
+        current: "Current &raquo;"
         next: "Next &rsaquo;"
         previous: "&lsaquo; Prev"
       unknown_user: "unknown user"

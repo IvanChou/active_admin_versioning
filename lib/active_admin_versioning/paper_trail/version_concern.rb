@@ -21,6 +21,13 @@ module ActiveAdminVersioning
         nil
       end
 
+      # Only for the datatype of object_chenges is postgresql json.
+      def item_changes_for_diff
+        before = object_changes.transform_values(&:first)
+        after = object_changes.transform_values(&:last)
+        [before, after]
+      end
+
       def item_instance
         @item_instance ||= item_buildable? ? item_class.new(item_attributes) : nil
       end

@@ -1,0 +1,25 @@
+zh-CN:
+  activerecord:
+    models:
+      paper_trail/version: 历史版本
+    attributes:
+      paper_trail/version:
+        id: ID
+        event: 事件
+        whodunnit: 操作人
+        item_type: 数据类型
+        object: Object
+        object_changes: 更新内容
+        created_at: 操作时间
+  views:
+    version:
+      empty: "This record doesn't have any %{model_name}"
+      event:
+        create: 创建
+        destroy: 删除
+        update: 更新
+      pagination:
+        current: "当前版本"
+        next: "下一版本"
+        previous: "上一版本"
+      unknown_user: "-"
